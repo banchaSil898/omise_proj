@@ -75,8 +75,9 @@ phpunit.phar
 /backend/web/index-test.php
 /backend/web/robots.txt
 
-/matichonbook/data/*
-/matichonbook/runtime/uploads/transfer/*
+/data/*
+/runtime/uploads/transfer/*
 # Ignore all logs in the runtime/logs directory
-matchonbook/runtime/logs/*
+/runtime/logs/*
+/web/uploads/tmp/*
 # End of https://www.toptal.com/developers/gitignore/api/yii2,visualstudiocode,composer
