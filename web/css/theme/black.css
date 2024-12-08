@@ -1,0 +1,162 @@
+body {
+    color:#4a4a4a;
+}
+a, a:hover, a:focus, a:active {
+    color: #000000;
+}
+
+.table.table-white,
+.table.table-white td,
+.table.table-white th {
+    background: #ffffff;
+    color:#232323;
+}
+.navbar-default-book {
+    background-color:#ffffff;
+}
+
+#owl-main .item {
+    background-color:#84a775;
+}
+
+.header .navbar-top-bar {
+    background-color:#3a3a3a;
+}
+.header .navbar-top-bar .navbar-nav > li > a {
+    background-color:#3a3a3a;
+}
+.header .navbar-top-bar .navbar-nav > li.active > a {
+    color: #d2d2d2;
+}
+.header .navbar-top-bar .navbar-nav > li.active a {
+    background-color:#565656;
+}
+.header .navbar-top-bar .navbar-nav > li > a:hover, .header .navbar-top-bar .navbar-nav > li > a:focus {
+    color:#ffffff;
+    background:#6f6f6f;
+}
+#my-cart.cart-white {
+    color:#0f273c;
+    background-color:#f5f5f5;
+}
+#my-cart.cart-white .table > tbody {
+    background-color:#fdfdfd;
+}
+#my-cart.cart-white .table > thead > tr > th {
+    color:#000;
+    background-color:#d2e8d5;
+}
+#my-cart {
+    color:#90a9bf;
+    background-color: #0f273c;
+}
+#my-cart .table > tbody {
+    background-color:#253340;
+}
+.table-cart.table-cart-checkout th {
+    color:#535353;
+}
+
+.book-details .book-title a:hover, .book-details .book-title a:focus {
+    color: #198b6c;
+}
+
+.block-featured-author .module-title {
+    color: #21B68E;
+}
+
+.module .module-title {
+    color: #000000;
+}
+
+.breadcrumb-container {
+    background: #3a3a3a;
+}
+
+.header .navbar-default .btn-cart .badge-cart-items-count {
+    background-color:#929292;
+}
+
+
+.search-bar-input {
+    background:#ffffff;
+    color:#000000;
+}
+
+.btn-primary {
+    background-color: #000000;
+    border-color: #5d5d5d;
+}
+
+.btn.dropdown-toggle.btn-default, .bootstrap-select.btn-default:hover, .bootstrap-select.btn-default:focus, .bootstrap-select.btn-default:active, .bootstrap-select.btn-default.active, .bootstrap-select.open .dropdown-toggle.btn-default {
+    background-color: #000000;
+    border-color: #5d5d5d;
+}
+
+.book-details .book-title a {
+    color: #000000;
+}
+
+.search-bar-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #555555;
+    opacity: 1; /* Firefox */
+}
+
+.search-bar-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #555555;
+}
+
+.search-bar-input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #555555;
+}
+
+.navbar-footer .navbar-inner-text {
+    color:#000000;
+}
+
+.featured-item-block {
+    background-color:#dedede;
+}
+
+img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.scrollup {
+    background-color:#3e3e3e;
+}
+
+.page-header .page-title {
+    color:#000000;
+}
+
+.sidebar .module .module-header {
+    background: #505050;
+}
+
+.category-list > li > ul > .active, .category-list > .sub-category-list > a {
+    color:#000000;
+}
+
+.category-list li.active>a {
+    background:#dedede;
+}
+
+.text-primary {
+    color:#000000;
+}
+
+
+.foot-icon-facebook {
+    background-color:#8c8c8c; 
+}
+.foot-icon-line {
+    background-color:#8c8c8c;
+}
+.foot-icon-twitter {
+    background-color:#8c8c8c;
+}
+.foot-icon-instagram{
+    background-color:#8c8c8c;
+}

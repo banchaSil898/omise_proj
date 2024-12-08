@@ -1,0 +1,87 @@
+.slick-me-item {
+    background-size: cover;
+}
+a.slick-new-box {
+    display:block;
+}
+.slick-me-fix {
+
+}
+.slick-new-box {
+    /*height: 26vw;*/
+    /*min-height: 300px;*/
+    position: relative;
+}
+.slick-new-obj {/*
+    position:absolute;
+    bottom:4vh;*/
+}
+.slick-backdrop {
+    overflow: auto;
+    padding:30px 20px;
+    border-radius:12px;
+    background:rgba(0,0,0,0.66);
+}
+.slick-backdrop .cart-action .btn{
+    float:right;
+}
+.slick-new-box-inner .slick-book img {
+    display:inline-block;
+    width: 60%;
+}
+.slick-desc-pane {
+
+}
+.slick-new-box-inner {
+    margin:30px;
+}
+.slick-book {
+    text-align:center; 
+}
+.slick-book img {
+    border:1px solid #626262;
+    height:  45%;
+}
+div.slick-dotted.slick-slider  {
+    margin-bottom: 0px;
+}
+
+button.slick-prev {
+    left:30px;
+}
+button.slick-next {
+    right:30px;
+}
+
+button.slick-prev, button.slick-next {
+    z-index: 1000;
+    width:5vw;
+    height: 5vw;
+
+}
+button.slick-prev:before, button.slick-next:before {
+    font-size:5vw;
+}
+ul.slick-dots {
+    bottom:15px;
+    padding:10px;
+    z-index: 1000;
+}
+ul.slick-dots li button::before {
+    font-size:16px;
+    opacity: .40;
+    color:#ffffff;
+}
+ul.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: #cf212c;
+}
+
+.bg-resp {
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-size: contain;
+}
+#main-slider {
+    background:#fafafa;
+}

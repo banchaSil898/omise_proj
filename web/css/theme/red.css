@@ -1,0 +1,379 @@
+/*===================================================================================*/
+/*  Red Color
+/*===================================================================================*/
+/* Typography */
+/*===================================================================================*/
+/*  COLOR LESS
+/*===================================================================================*/
+/*d75f33*/
+/*cb5a30*/
+.primary-color {
+    color: #e2693c;
+}
+.logo-color {
+    fill: #e2693c;
+}
+a,
+a:hover,
+a:focus,
+a:active {
+    color: #cf212c;
+}
+.logo-fill-1 {
+    fill: #e2683b;
+}
+.logo-fill-2 {
+    fill: #e67d56;
+}
+.logo-fill-3 {
+    fill: #f4c9b8;
+}
+::-moz-selection {
+    background-color: #cf212c;
+}
+::selection {
+    background-color: #cf212c;
+}
+.primary-bg {
+    background-color: #cf212c;
+}
+.btn-primary {
+    background-color: #cf212c;
+    border-color: #cf212c;
+}
+.header .navbar-top-bar .navbar-nav > li.active > a {
+    color: #cf212c;
+}
+.header .navbar-top-bar .navbar-nav > li > a:hover,
+.header .navbar-top-bar .navbar-nav > li > a:focus {
+    color: #ffffff;
+}
+.header .navbar-default .navbar-nav li.active a.hover,
+.header .navbar-default .navbar-nav li.active a.focus {
+    color: #cf212c;
+}
+.header .navbar-default .navbar-nav > li a:hover,
+.header .navbar-default .navbar-nav > li a:focus {
+    color: #cf212c;
+}
+.module .module-title {
+    color: #cf212c;
+}
+.page-header .page-title {
+    color: #cf212c;
+}
+.section-title {
+    color: #cf212c;
+}
+.brand-carousel .item {
+    color: #cf212c;
+}
+.book-details .book-title a {
+    color: #000000;
+}
+.book-details .book-price {
+    color: #cf212c;
+}
+.book-details .book-price-cover {
+    color: #7c7c7c;
+}
+
+#my-cart .module-heading h4 {
+    color: #cf212c;
+}
+#my-cart .module .module-body .order-detail .table-cart > tbody > .cart-book .media .media-heading a {
+    color: #cf212c;
+}
+#my-cart .module .module-body .order-detail .table-cart > tfoot > tr:last-child {
+    color: #cf212c;
+}
+#my-cart .module .module-body .order-detail .table-cart > tfoot > tr:nth-child(2) {
+    color: #cf212c;
+}
+.book-detail-header .book-title {
+    color: #cf212c;
+}
+.book-detail-header .book-author-name {
+    color: #cf212c;
+}
+.navbar-nav .dropdown-menu .menu-header {
+    color: #cf212c;
+}
+.block-featured-author .module-title {
+    color: #cf212c;
+}
+.block-featured-author .module-body .author-details .author-name a {
+    color: #cf212c;
+}
+.star-rating .fa-star.color {
+    color: #cf212c;
+}
+.home.page .slider {
+    background: #cf212c;
+}
+.btn-navigation:hover,
+.btn-navigation:focus {
+    background: #cf212c;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+    background: #e2693c;
+    border: 1px solid #cf212c;
+}
+.breadcrumb-container {
+    background: #3d619b ;
+}
+.breadcrumb > li + li:before {
+    color: #b6451b;
+}
+#search .form-control,
+#notFound-search .form-control {
+    background: #cf212c;
+    border: #cf212c;
+}
+#search .btn-search,
+#notFound-search .btn-search {
+    background: #cb4d1e;
+    border: #cb4d1e;
+}
+#search .select-wrapper button,
+#notFound-search .select-wrapper button {
+    background: #cb4d1e;
+    border: #cb4d1e;
+}
+.form-control::-moz-placeholder {
+    color: #e78561;
+}
+.form-control::-webkit-input-placeholder {
+    color: #e78561;
+}
+.book-detail-quantity .txt-quantity {
+    background: #c94c1e;
+}
+.book-detail-quantity .quant-input .arrow.plus {
+    background: #cb4d1e;
+}
+.book-detail-quantity .quant-input .arrow.plus:hover {
+    background: #cf212c;
+}
+.book-detail-quantity .quant-input .arrow.minus {
+    background: #cf212c;
+}
+.book-detail-quantity .quant-input .arrow.minus:hover {
+    background: #cf212c;
+}
+.btn-primary-dark {
+    background: #cb4d1e;
+}
+.btn-primary-light {
+    background: #cf212c;
+}
+.btn-primary-light:hover,
+.btn-primary-light:focus {
+    background: #cb4d1e;
+}
+.book-additional-details .book-detail-tab {
+    background: #cb4d1e;
+}
+.book-detail-tab li.active a,
+.book-detail-tab li.active a:hover,
+.book-detail-tab li.active a:focus,
+.book-detail-tab li a:hover,
+.book-detail-tab li a:focus {
+    background: #a53e18;
+}
+.subscribe-form .subscriber-name {
+    background: #cf212c;
+    border: #cf212c;
+}
+.navbar-footer .navbar-inner-text {
+    color: #cf212c;
+}
+.btn.dropdown-toggle.btn-default {
+    background: #cf212c;
+    border: #cf212c;
+}
+.bootstrap-select.btn-default:hover,
+.bootstrap-select.btn-default:focus,
+.bootstrap-select.btn-default:active,
+.bootstrap-select.btn-default.active,
+.bootstrap-select.open .dropdown-toggle.btn-default {
+    background: #cf212c;
+    border: #cf212c;
+}
+.header .navbar-default .btn-cart:hover,
+.header .navbar-default .btn-cart:focus {
+    background: #cf212c;
+}
+.navbar-footer .navbar-nav > li ul.language-block button:hover,
+.navbar-footer .navbar-nav > li ul.language-block button:focus {
+    background: #cf212c;
+    border: #cf212c;
+}
+#accordion .panel-default .panel-title > a:not(.collapsed) .step {
+    background: #c94c1e;
+}
+.input-group .input-group-addon-book {
+    background: #cf212c;
+    border: #cf212c;
+}
+.book-radio:checked + label .radio-background .icon {
+    color: #c94c1e;
+}
+.panel-collapse .forgot-password a {
+    color: #cb4d1e;
+    border-bottom: 1px dotted #cb4d1e;
+}
+.table-cart.cart-detail th.dark {
+    background: #cb4d1e;
+}
+.table-cart.cart-detail th {
+    background: #cf212c;
+}
+.table-cart .quant-input .arrow.gradient {
+    background: #cf212c;
+}
+.table-cart .quant-input .arrow.gradient:hover {
+    background: #cf212c;
+}
+.table-cart .txt-quantity,
+.table-cart > tbody .price.subtotal {
+    color: #cf212c;
+}
+.table-cart tfoot tr:last-child {
+    color: #cf212c;
+}
+.sidebar .module .module-header {
+    background: #cf212c;
+}
+.category-list > li > ul > .active,
+.category-list > .sub-category-list > a {
+    color: #c94c1e;
+}
+#owl-main .owl-controls .owl-pagination .owl-page span {
+    background: #efad95;
+}
+#owl-main .owl-controls .owl-pagination .owl-page.active span {
+    background: #fcf2ee;
+}
+.author-details .author-name > a:hover,
+.author-details .author-name > a:focus {
+    color: #cd4e1e !important;
+}
+.book-details .book-title a:hover,
+.book-details .book-title a:focus {
+    color: #cd4e1e;
+}
+.footer-widgets .module .module-body .list-link a:hover,
+.footer-widgets .module .module-body .list-link a:focus {
+    color: #cf212c;
+}
+.navbar-static-bottom #example li a:hover,
+.navbar-static-bottom #example li a:focus {
+    color: #cf212c;
+}
+.book .book-cover:hover {
+    background: #cf212c;
+}
+.list-kybook > li:before {
+    background-color: #f5cabb;
+}
+#owl-main .item {
+    background: #cf212c;
+}
+.slider-caption .btn-price {
+    -moz-box-shadow: 0px 3px #cd4e1e;
+    -webkit-box-shadow: 0px 3px #cd4e1e;
+    box-shadow: 0px 3px #cd4e1e;
+}
+.selectpicker.dropdown-menu > li > a:hover,
+.selectpicker.dropdown-menu > li > a:focus {
+    color: #cf212c;
+}
+.grid-list-view-buttons li.active span,
+.grid-list-view-buttons li.active span:hover {
+    color: #cf212c;
+}
+.grid-list-view-buttons li a span:hover,
+.grid-list-view-buttons li a span:focus {
+    color: #cf212c;
+}
+.book-pagination .active a,
+.book-pagination .active a:hover,
+.book-pagination .active a:focus,
+.book-pagination > li > a:hover,
+.book-pagination > li > a:focus {
+    background: #cf212c;
+    border: 1px solid #cf212c;
+}
+.scrollup {
+    background: #cf212c;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    background: url("images/ui-bg_glass_75_d75f33_1x400.png") repeat-x scroll 50% 50% #cf212c !important;
+    border: #cf212c !important;
+}
+.ui-widget-header {
+    background: url("images/ui-bg_highlight-soft_75_d75f33_1x100.png") repeat-x scroll 50% 50% #cf212c !important;
+}
+.table-cart > tbody .price.subtotal {
+    color: #cf212c;
+}
+.btn-flat:hover,
+.btn-flat:focus {
+    background: #cb4d1e !important;
+}
+.index-dropdown-discount-name {
+    color: #cf212c;
+}
+.header .navbar-top-bar {
+    background-color: #cf212c ;
+    box-shadow: 0 3px #b73e3e;
+}
+.header .navbar-top-bar .navbar-nav > li > a {
+    background-color :#b73e3e;
+}
+
+.header .navbar-top-bar .navbar-nav > li.active > a {
+    color:#ffffff;
+}
+
+#my-cart.cart-white {
+    color:#0f273c;
+    background-color:#f5f5f5;
+}
+#my-cart.cart-white .table > tbody {
+    background-color:#fdfdfd;
+}
+#my-cart.cart-white .table > thead > tr > th {
+    color:#fff;
+    background-color:#cf212c;
+}
+#my-cart {
+    color:#90a9bf;
+    background-color: #0f273c;
+}
+#my-cart .table > tbody {
+    background-color:#253340;
+}
+.featured-item-block { 
+    background-color:#fee6a4;
+}
+.btn-danger.btn-out-of-stock {
+    background-color:#7c7c7c;
+    border-color: #7c7c7c;
+}
+
+.btn-primary.btn-add-cart {
+    background-color:#cf212c;
+    border-color: #cf212c;
+}
+
+.text-title {
+    color:#000000;
+}

@@ -1,0 +1,2 @@
+<?= $model->purchase_no; ?>
+

@@ -1,0 +1,12 @@
+@media(max-width:768px) {
+    #product-data-grid > .col-sm-2,
+    #product-data-grid > .col-sm-10 {
+        float:none;    
+    }
+    
+    #product-data-grid > .col-sm-2 {
+        max-height: 220px;
+        overflow-y: scroll;
+        margin-bottom: 30px;
+    }
+}

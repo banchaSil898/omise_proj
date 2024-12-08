@@ -1,0 +1,97 @@
+{
+    "name": "sukung34/mic-book",
+    "description": "Matichon Book Store",
+    "keywords": ["yii2", "framework", "basic", "project template"],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.14",
+        "yiisoft/yii2-authclient": "*",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiister/yii2-gentelella": "~1.0",
+        "yiisoft/yii2-imagine": "~2.1.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-jui": "*",
+        "kartik-v/yii2-dynagrid": "@dev",
+        "kartik-v/yii2-social": "dev-master",
+        "kartik-v/yii2-widgets": "@dev",
+        "kartik-v/yii2-editable": "@dev",
+        "sukung34/yii2-redactor": "@dev",
+        "miloschuman/yii2-highcharts-widget": "^6.0",
+        "drsdre/yii2-wizardwidget": "*",
+        "facebook/graph-sdk": "*",
+        "codesk/yii2-ext": "*@dev",
+        "2amigos/yii2-tinymce-widget": "~1.1",
+        "2amigos/yii2-ckeditor-widget": "~2.1",
+        "himiklab/yii2-recaptcha-widget": "*",
+        "kop/yii2-scroll-pager": "dev-master",
+        "linslin/yii2-curl": "*",
+        "richardfan1126/yii2-js-register": "*",
+        "phpoffice/phpspreadsheet": "*",
+        "mpdf/mpdf" : "~7.0"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1",
+        "codeception/specify": "~0.4.3"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "../yii2-ext"
+        },
+        {
+            "type": "vcs",
+            "url": "../yii2-redactor"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/e11i0t/yii2-infinite-scroll"
+        }
+    ]
+}

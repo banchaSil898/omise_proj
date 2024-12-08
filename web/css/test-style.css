@@ -1,0 +1,28 @@
+body {
+    font-family: sukhumvitregular, sans-serif;
+}
+.site-menu {
+    background:#eae9e9;
+}
+.site-logo {
+    width: 290px;
+}
+.topbar {
+    background:#443266;
+}
+.topbar .topbar-column a:not(.social-button), .topbar .topbar-column span, .topbar .topbar-column p, .topbar .social-button {
+    color:#eeeeee;
+}
+.topbar .topbar-column .dropdown-menu a {
+    color:#606975;
+}
+.book-cover {
+    background-repeat: repeat;
+    -webkit-border-radius: 0 1px 1px 0;
+    -moz-border-radius: 0 1px 1px 0;
+    border-radius: 0 1px 1px 0;
+    -moz-box-shadow: 1px -1px 0 #fff, 2px -2px 0 #e5e5e5, 3px -3px 0 #fff, 4px -4px 0 #e5e5e5, 5px -5px 0 #fff, 6px -6px 0 #b7b7b7, 0 -1px 0 #bababa, 2px -3px 0 #bababa, 4px -5px 0 #bababa, 0 0 1px rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: 1px -1px 0 #fff, 2px -2px 0 #e5e5e5, 3px -3px 0 #fff, 4px -4px 0 #e5e5e5, 5px -5px 0 #fff, 6px -6px 0 #b7b7b7, 0 -1px 0 #bababa, 2px -3px 0 #bababa, 4px -5px 0 #bababa, 0 0 1px rgba(0, 0, 0, 0.8);
+    box-shadow: 1px -1px 0 #fff, 2px -2px 0 #e5e5e5, 3px -3px 0 #fff, 4px -4px 0 #e5e5e5, 5px -5px 0 #fff, 6px -6px 0 #b7b7b7, 0 -1px 0 #bababa, 2px -3px 0 #bababa, 4px -5px 0 #bababa, 0 0 1px rgba(0, 0, 0, 0.8);
+    position: relative;
+}

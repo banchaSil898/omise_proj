@@ -1,0 +1,70 @@
+body {
+    color:#4a4a4a;
+}
+.table.table-white,
+.table.table-white td,
+.table.table-white th {
+    background: #ffffff;
+    color:#232323;
+}
+.navbar-default-book {
+    background-color:#c9dacb;
+}
+
+#owl-main .item {
+    background-color:#84a775;
+}
+
+.header .navbar-top-bar {
+    background-color:#3a7942;
+}
+.header .navbar-top-bar .navbar-nav > li > a {
+    background-color:#5c6b49;
+}
+.header .navbar-top-bar .navbar-nav > li.active > a {
+    color: #d4d274;
+}
+.header .navbar-top-bar .navbar-nav > li.active a {
+    background-color:#5a8449;
+}
+.header .navbar-top-bar .navbar-nav > li > a:hover, .header .navbar-top-bar .navbar-nav > li > a:focus {
+    color:#ffffff;
+    background:#629a4c;
+}
+#my-cart.cart-white {
+    color:#0f273c;
+    background-color:#f5f5f5;
+}
+#my-cart.cart-white .table > tbody {
+    background-color:#fdfdfd;
+}
+#my-cart.cart-white .table > thead > tr > th {
+    color:#000;
+    background-color:#d2e8d5;
+}
+#my-cart {
+    color:#90a9bf;
+    background-color: #0f273c;
+}
+#my-cart .table > tbody {
+    background-color:#253340;
+}
+.table-cart.table-cart-checkout th {
+    color:#535353;
+}
+
+.book-details .book-title a:hover, .book-details .book-title a:focus {
+    color: #198b6c;
+}
+
+.block-featured-author .module-title {
+    color: #21B68E;
+}
+
+.module .module-title {
+    color: #21B68E;
+}
+
+.search-bar-input {
+    background:#c1e2b2;
+}
