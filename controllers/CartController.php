@@ -11,6 +11,9 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\Response;
+use app\models\OmisePayments;
+require_once Yii::getAlias('@omise/Omise.php');  // เรียกใช้ Omise SDK ที่กำหนดใน aliases
+
 
 class CartController extends Controller {
 
@@ -112,8 +115,6 @@ class CartController extends Controller {
         }
 
         $cartLog = [];
-
-
         /**
          * Survey 2019
          */
@@ -254,15 +255,83 @@ class CartController extends Controller {
                         $cartLog[] = 'ค่าจัดสั่ง : ' . $cart->getDeliveryTotal();
                         $cartLog[] = 'รวมทั้งสิ้นราคา : ' . $cart->getGrandTotal();
                         $model->cart_log = implode("\n", $cartLog);
+                        $getcart = $this->getCart();
                         if ($model->doCheckout($this->getCart())) {
                             Yii::$app->session->set('gift', null);
                             Yii::$app->session->set('survey_2019', null);
+                            define('OMISE_PUBLIC_KEY', Yii::$app->params['omisePublicKey']);
+                            define('OMISE_SECRET_KEY', Yii::$app->params['omiseSecretKey']);
+                            $grandTotal = $cart->getGrandTotal() * 100;
+                            $omisePayments = new OmisePayments;
                             switch ($model->payment_method) {
                                 case Purchase::METHOD_CREDITCARD:
-                                    $this->redirect(['payment', 'order_no' => $model->purchase_no]);
+                                    try {
+                                        $charge = \OmiseCharge::create([
+                                            'amount'      => $grandTotal,
+                                            'currency'    => 'thb',
+                                            'card'        => Yii::$app->request->post('omiseToken'),
+                                        ]);
+                                        $omisePayments->order_id = $model->id;
+                                        $omisePayments->charge_id = $charge['id'];
+                                        $omisePayments->amount = $charge['amount'];
+                                        $omisePayments->net = $charge['net'];
+                                        $omisePayments->fee = $charge['fee'];
+                                        $omisePayments->fee_vat = $charge['fee_vat'];
+                                        $omisePayments->currency = $charge['currency'];
+                                        $omisePayments->status = $charge['charge_status'];
+                                        $omisePayments->payment_method = 'CREDITCARD';
+                                        $transaction_date = new \DateTime($charge['paid_at']);
+                                        $transaction_date->setTimezone(new \DateTimeZone('Asia/Bangkok'));
+                                        $omisePayments->transaction_date = $transaction_date->format('Y-m-d H:i:s');
+                                        $created_date = new \DateTime();
+                                        $created_date->setTimezone(new \DateTimeZone('Asia/Bangkok'));
+                                        $omisePayments->created_at = $created_date->format('Y-m-d H:i:s');
+                                        if($omisePayments->save()){
+                                            $model->payment_info = "ชำระผ่าน omise รหัส " . $charge['id'];
+                                            $model->save();
+                                            $this->redirect(['done', 'order_no' => $model->purchase_no]);
+                                        }
+                                        
+                                    } catch (\Exception $e) {
+                                        Yii::error("Failed to create omise charge relation: " . $e->getMessage(), __METHOD__);
+                                    }
+                                    break;
+                                case Purchase::METHOD_TRANSFER:
+                                    $source = \OmiseSource::create([
+                                        'type' => 'promptpay',
+                                        'amount' => $grandTotal,
+                                        'currency' => 'thb', // สกุลเงิน
+                                    ]);
+
+                                    // สร้าง Charge โดยใช้ Source ที่สร้างขึ้น
+                                    $charge = \OmiseCharge::create([
+                                        'amount' => $grandTotal,
+                                        'currency' => 'thb', // สกุลเงิน
+                                        'source' => $source['id'],  // ใช้ Source ที่สร้างจาก PromptPay
+                                        'return_uri' => Url::to(['/cart/complete'] ,true), // URL ที่จะ redirect เมื่อชำระเงินสำเร็จ,
+                                        'metadata' => $metadata
+                                    ]);
+                                    $omisePayments->order_id = $model->id;
+                                    $omisePayments->charge_id = $charge['id'];
+                                    $omisePayments->amount = $charge['amount'];
+                                    $omisePayments->net = $charge['net'];
+                                    $omisePayments->fee = $charge['fee'];
+                                    $omisePayments->fee_vat = $charge['fee_vat'];
+                                    $omisePayments->currency = $charge['currency'];
+                                    $omisePayments->status = $charge['charge_status'];
+                                    $omisePayments->payment_method = 'QR PROMPTPAY';
+                                    // 2024-11-06 03:24:05
+                                    $created_date = new \DateTime();
+                                    $created_date->setTimezone(new \DateTimeZone('Asia/Bangkok'));
+                                    $omisePayments->created_at = $created_date->format('Y-m-d H:i:s');
+                                    $omisePayments->save();
+
+                                    // แสดง QR Code ให้ลูกค้าสแกน
+                                    $qr_code_url = $charge['source']['scannable_code']['image']['download_uri'];
+                                    $this->redirect(['done', 'order_no' => $model->purchase_no, 'omise_charge' => $charge['source']['scannable_code']]);
                                     break;
                                 default:
-                                    $this->redirect(['done', 'order_no' => $model->purchase_no]);
+                                    $this->redirect(['done', 'order_no' => $model->purchase_no, 'omise_charge' => $charge['source']['scannable_code']]);
                                     break;
                             }
                         }
@@ -300,6 +369,9 @@ class CartController extends Controller {
         ]);
     }
 
+    public function actionQrcode($qr_image, $source){
+        return  $this->render('qrcode', ['qr_image' => $qr_image, 'source' => $source]);
+    }
     public function actionResponse() {
         return $this->render('test');
     }

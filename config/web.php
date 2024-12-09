@@ -13,6 +13,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
+        '@omise' => '@app/vendor/omise-php-master/lib',
     ],
     'modules' => [
         'admin' => [

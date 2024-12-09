@@ -263,4 +263,9 @@ class Purchase extends \yii\db\ActiveRecord
     {
         return $this->hasMany(PurchaseStatus::className(), ['purchase_id' => 'id']);
     }
+
+    public function getOmisePayments()
+    {
+        return $this->hasOne(OmisePayments::className(), ['order_id' => 'id']);
+    }
 }
