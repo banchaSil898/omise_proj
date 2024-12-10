@@ -59,8 +59,8 @@ use yii\helpers\ArrayHelper;
             </tr>
         <?php endif; ?>
         <tr>
-            <td colspan="4" class="text-right text-bold">จำนวนเงินที่ต้องชำระ:</td>
-            <td class="text-right text-bold"><?= Yii::$app->formatter->asDecimal($cart->grandTotal, 2); ?></td>
+            <td colspan="4" class="text-right text-bold">จำนวนเงินที่ต้องชำร:</td>
+            <td class="text-right text-bold" id="grandtotal"><?= Yii::$app->formatter->asDecimal($cart->grandTotal, 2); ?></td>
         </tr>
     </tfoot><!-- /tfoot -->
     <tbody class="index-dropdown-body">

@@ -19,6 +19,7 @@ Breadcrumbs::widget([
     <?=
     $this->render('/widgets/purchase', [
         'model' => $model,
+        'omise_qr_uri' => $omise_qr_uri ?? null
     ]);
     ?>
 </div>

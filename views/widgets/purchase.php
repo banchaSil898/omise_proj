@@ -7,8 +7,6 @@ use codesk\components\Html;
 use kartik\form\ActiveForm;
 use kartik\widgets\DatePicker;
 use yii\helpers\ArrayHelper;
-?>
-<?php
 Page::begin([
     'title' => 'ใบสั่งซื้อเลขที่ ' . Html::tag('span', '#' . $model->purchase_no, ['class' => 'text-primary']),
     'subtitle' => 'เราได้รับคำสั่งซื้อของคุณแล้ว กรุณาโอนเงิน ตามรายละเอียดด้านล่าง'
@@ -119,42 +117,10 @@ Page::begin([
                 </tr>
             <?php endif; ?>
         </table>
-        <?php if ($model->getIsTransferNotice()): ?>
-            <div class="alert alert-info text-center">
-                <?= Html::awesome('clock-o'); ?> แจ้งโอนแล้ว กรุณารอการตรวจสอบ
-            </div>
-        <?php endif; ?>
         <?php if ($model->getIsWaitForTransfer()): ?>
             <div>
-                <p>หลังจากชำระเงินเรียบร้อยแล้ว กรุณาแจ้งโอนเงิน</p>
-                <?php
-                $form = ActiveForm::begin([
-                            'type' => 'horizontal',
-                            'enableClientValidation' => false,
-                            'formConfig' => [
-                                'labelSpan' => 3,
-                            ],
-                            'options' => [
-                                'enctype' => 'multipart/form-data'
-                            ],
-                ]);
-                ?>
-                <?= $form->field($model, 'transfer_bank_origin')->dropDownList(ArrayHelper::map(Bank::find()->andWhere(['is_enabled' => '1'])->orderBy(['order_no' => SORT_ASC])->all(), 'id', 'shortName')); ?>
-                <?= $form->field($model, 'transfer_bank')->textInput([]); ?>
-                <?=
-                $form->field($model, 'transfer_date')->widget(DatePicker::className(), [
-                    'pluginOptions' => [
-                        'format' => 'yyyy-mm-dd',
-                    ],
-                ]);
-                ?>
-                <?= $form->field($model, 'transfer_time')->textInput(['placeholder' => date('H:i')]); ?>
-                <?= $form->field($model, 'transfer_amount')->textInput([]); ?>
-                <?= $form->field($model, 'transferFile')->fileInput([]); ?>
-                <div>
-                    <?= Html::submitButton('แจ้งโอนเงิน', ['class' => 'btn btn-primary pull-right btn-lg']); ?>
-                </div>
-                <?php ActiveForm::end(); ?>
+                <!-- <p>หลังจากชำระเงินเรียบร้อยแล้ว กรุณาแจ้งโอนเงิน</p> -->
+                 <p>scan qr code ด้วย mobile banking เพื่อชำระเงิน</p>
             </div>
             <div class="clearfix"></div>
             <hr/>
@@ -186,7 +152,11 @@ Page::begin([
             </ul>
         </div>
         <?php if ($model->getIsWaitForTransfer()): ?>
-            <?= $this->render('/widgets/transfer'); ?>
+            <?php //$this->render('/widgets/transfer'); ?>
+            <div class="text-center">
+                <?= Html::img($omise_qr_uri, ['alt' => 'My logo', 'style'=> 'max-width:23em;']) ?>
+            </div>
+
         <?php endif; ?>
     </div>
 </div>

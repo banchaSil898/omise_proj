@@ -5,6 +5,7 @@ use app\widgets\Page;
 use codesk\components\Html;
 use kartik\form\ActiveForm;
 use yii\helpers\ArrayHelper;
+$get = Yii::$app->request->get();
 ?>
 <?=
 Breadcrumbs::widget([
@@ -20,32 +21,15 @@ Breadcrumbs::widget([
     <div class="text-center">
         <?php
         Page::begin([
-            'title' => 'กรุณารอสักครู่',
-            'subtitle' => 'ระบบกำลังประมวลผล',
+            'title' => 'QR Code Promptpay',
         ])
         ?>
-
+        <?= var_dump($get) ?>
         <h2 class="text-center">
-            <?=
-            Html::awesome('spinner', [
-                'class' => 'fa-spin',
-            ]);
-            ?>
+            <?= Html::img(Yii::$app->request->get('qr_image'), ['alt' => 'My logo', 'style'=> 'max-width:15em;']) ?>
         </h2>
     </div>
     <?php Page::end(); ?>
-    <?php
-    $form = ActiveForm::begin([
-                'action' => ArrayHelper::getValue(Yii::$app->params, 'kbank.gatewayUrl'),
-                'options' => [
-                    'id' => 'frm-payment',
-                ],
-    ]);
-    ?>
-    <?php foreach ($model->paymentFields as $name => $value): ?>
-        <?= Html::hiddenInput($name, $value); ?>
-    <?php endforeach; ?>
-    <?php ActiveForm::end(); ?>
 </div>
 <?php
 // $this->registerJs(<<<JS

@@ -35,6 +35,7 @@ $user = Yii::$app->user->identity;
                 ],
     ]);
     ?>
+    <script type="text/javascript" src="https://cdn.omise.co/omise.js"></script>
     <div class="checkout page">
         <div class="container">
             <div class="row">
@@ -141,6 +142,8 @@ $user = Yii::$app->user->identity;
                     </div>
                     <?php Page::end(); ?>
                 </div>
+                <input type="hidden" name="omiseToken"/>
+                <input type="hidden" name="omiseSource"/>
 
             </div>
         </div>
@@ -156,6 +159,42 @@ $giftRememberUrl = Url::to(['cart/gift-remember']);
 ?>
 <?php JSRegister::begin(); ?>
 <script>
+    OmiseCard.configure({
+      publicKey: '<?= Yii::$app->params['omisePublicKey']?>'
+    });
+    $(document).ready(function(){
+      $('#frm-cart').on('beforeSubmit', function(event, fields){
+        const payment_method_id = $('input[name="Purchase[payment_method]"]:checked').val();
+        if(payment_method_id == 1){
+          event.preventDefault();
+          let grandTotal = parseFloat($('#grandtotal').html().replace(/,/g, '')) ?? 0;
+          // เปิด Omise Modal เพื่อให้ลูกค้าทำการกรอกข้อมูลการชำระเงิน
+          OmiseCard.open({
+            amount: grandTotal * 100,  // จำนวนเงินในหน่วยสตางค์
+            currency: "THB",  // สกุลเงินเป็นบาท
+            defaultPaymentMethod: 'credit_card',
+            onCreateTokenSuccess: function (nonce) {
+              // เมื่อ Omise สร้าง token สำเร็จ ให้ใส่ token ลงในฟอร์ม
+              if (nonce.startsWith("tokn_")) {
+                $('[name=omiseToken]').val(nonce);
+              } else {
+                $('[name=omiseSource]').val(nonce);
+              }
+              // ทำการ submit ฟอร์มใหม่หลังจากได้รับ token
+              $('#frm-cart').off('beforeSubmit')
+              $('#frm-cart').submit();
+            },
+            onFormClosed: function () {
+              console.log('Omise modal closed');
+            }
+          });
+          return false;
+        }else{
+          return true;
+        }
+        // TODO payment
+      })
+    })
     $(document).on('change', '.dd-gift-change', function () {
         var obj = $(this);
         $.post('<?= $giftRememberUrl; ?>', {
@@ -164,9 +203,7 @@ $giftRememberUrl = Url::to(['cart/gift-remember']);
             value: obj.val()
         }, function () {
             cartDisplay();
-            console.log('saved ' + obj.val() + ' to session.');
         });
-        console.log($(this).val());
     });
 
     $(document).on('click', '.btn-add-promotion', function () {
@@ -230,63 +267,22 @@ $giftRememberUrl = Url::to(['cart/gift-remember']);
 
     $("#collapseOne, #collapseTwo, #collapseThree, #collapseShippingDetails, #collapsePaymentInformation, #collapsePromotion").on("shown.bs.collapse", function () {
         var myEl = $(this).prev('.panel-heading');
-        console.log($(myEl));
         $('html, body').animate({
             scrollTop: $(myEl).offset().top
         }, 500);
     });
 
     function togglePanel(step) {
-        switch (step) {
-            case 1:
-                $('#collapseOne').collapse('show');
-                $('#collapseTwo').collapse('hide');
-                $('#collapseThree').collapse('hide');
-                $('#collapseShippingDetails').collapse('hide');
-                $('#collapsePaymentInformation').collapse('hide');
-                $('#collapsePromotion').collapse('hide');
-                break;
-            case 2:
-                $('#collapseTwo').collapse('show');
-                $('#collapseOne').collapse('hide');
-                $('#collapseThree').collapse('hide');
-                $('#collapseShippingDetails').collapse('hide');
-                $('#collapsePaymentInformation').collapse('hide');
-                $('#collapsePromotion').collapse('hide');
-                break;
-            case 3:
-                $('#collapseThree').collapse('show');
-                $('#collapseOne').collapse('hide');
-                $('#collapseTwo').collapse('hide');
-                $('#collapseShippingDetails').collapse('hide');
-                $('#collapsePaymentInformation').collapse('hide');
-                $('#collapsePromotion').collapse('hide');
-                break;
-            case 4:
-                $('#collapseOne').collapse('hide');
-                $('#collapseTwo').collapse('hide');
-                $('#collapseThree').collapse('hide');
-                $('#collapseShippingDetails').collapse('show');
-                $('#collapsePaymentInformation').collapse('hide');
-                $('#collapsePromotion').collapse('hide');
-                break;
-            case 5:
-                $('#collapseOne').collapse('hide');
-                $('#collapseTwo').collapse('hide');
-                $('#collapseThree').collapse('hide');
-                $('#collapseShippingDetails').collapse('hide');
-                $('#collapsePaymentInformation').collapse('show');
-                $('#collapsePromotion').collapse('hide');
-                break;
-            case 6:
-                $('#collapsePromotion').collapse('show');
-                $('#collapseOne').collapse('hide');
-                $('#collapseTwo').collapse('hide');
-                $('#collapseThree').collapse('hide');
-                $('#collapseShippingDetails').collapse('hide');
-                $('#collapsePaymentInformation').collapse('hide');
-                break;
-        }
+        const show = {
+            true : 'show',
+            false : 'hide'
+        };
+        $('#collapseOne').collapse(show[step == 1]);
+        $('#collapseTwo').collapse(show[step == 2]);
+        $('#collapseThree').collapse(show[step == 3]);
+        $('#collapseShippingDetails').collapse(show[step == 4]);
+        $('#collapsePaymentInformation').collapse(show[step == 5]);
+        $('#collapsePromotion').collapse(show[step == 6]);
     }
 
     $(document).ready(function () {
@@ -321,24 +317,19 @@ $giftRememberUrl = Url::to(['cart/gift-remember']);
                     if (fields.step > 6) {
                         $('#step-6').html('<span class="text-success"><span class="glyphicon glyphicon-ok"></span></span>');
                     }
-                    console.log(fields, errors);
 
                     if (errors.length) {
-                        console.log('have error');
                         event.preventDefault();
                         return false;
                     }
                     return true;
                 });
-
         $(document).on('change', '#frm-cart', function () {
-            console.log('form chnaged.');
             formProcess();
         });
 
         $(document).on('change', '#purchase-invoice_country, #purchase-delivery_country', function () {
             $.post($(this).closest('form').attr('action') + '?mode=update', $(this).closest('form').serialize(), function (data) {
-                console.log('update delivery method');
                 $('#delivery-pane').html($('#delivery-pane', data).html());
                 cartDisplay();
             });
@@ -499,6 +490,7 @@ $giftRememberUrl = Url::to(['cart/gift-remember']);
             }
             return false;
         });
+        
     </script>
     <?php JSRegister::end(); ?>
 <?php endif; ?>
