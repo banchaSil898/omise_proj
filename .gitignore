@@ -76,8 +76,9 @@ phpunit.phar
 /backend/web/robots.txt
 
 /data/*
-/web/uploads/tmp/*
+/web/uploads/*
 /runtime/uploads/transfer/*
 # Ignore all logs in the runtime/logs directory
 /runtime/logs/*
+/upload/transfer/*
 # End of https://www.toptal.com/developers/gitignore/api/yii2,visualstudiocode,composer
