@@ -57,7 +57,7 @@ class ApiController extends Controller {
                     $updated_date = new \DateTime();
                     $updated_date->setTimezone(new \DateTimeZone('Asia/Bangkok'));
 
-                    $payment_date = new \DateTime($charge['paid_at']);
+                    $payment_date = new \DateTime($dataFromOmise->data->paid_at);
                     $payment_date->setTimezone(new \DateTimeZone('Asia/Bangkok'));
 
                     $commonDescription = "ชำระผ่าน omise รหัส " . $dataFromOmise->data->id;

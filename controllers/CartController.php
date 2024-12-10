@@ -309,7 +309,6 @@ class CartController extends Controller {
                                         'currency' => 'thb', // สกุลเงิน
                                         'source' => $source['id'],  // ใช้ Source ที่สร้างจาก PromptPay
                                         'return_uri' => Url::to(['/cart/complete'] ,true), // URL ที่จะ redirect เมื่อชำระเงินสำเร็จ,
-                                        'metadata' => $metadata
                                     ]);
                                     $omisePayments->order_id = $model->id;
                                     $omisePayments->charge_id = $charge['id'];
